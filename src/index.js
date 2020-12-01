@@ -1,38 +1,26 @@
-import {
-    GraphQLServer
-} from 'graphql-yoga'
+import { GraphQLServer } from 'graphql-yoga'
+import db from './db'
+import Query from './resolvers/Query'
+import Mutation from './resolvers/Mutation'
+import User from './resolvers/User'
+import Post from './resolvers/Post'
+import Comment from  './resolvers/Comment'
 
-// Type definitions (schema)
-const typeDefs = `
-type Query {
-    me: User!
-   }
 
-type User {
-    id: ID!
-    name: String!
-    email: String!
-    age: Int
-}
-`
-// Resolvers
-const resolvers = {
-    Query: {
-        me() {
-            return {
-                id: '1212121',
-                name: 'Mike',
-                email: 'dasdasd',
-                age: 21
-            }
-        }
-    }
-}
-// GraphQl Server
 const server = new GraphQLServer({
-    typeDefs,
-    resolvers
+    typeDefs: './src/schema.graphql',
+    resolvers: {
+        Query,
+        Mutation,
+        User,
+        Post,
+        Comment
+    },
+    context: {
+        db
+    }
 })
+
 server.start(() => {
     console.log('The server is up!')
 })
