@@ -1,7 +1,4 @@
-// Scalar types - String, Boolean, Int, Float, ID
-
-// Demo user data
-let users = [{
+const users = [{
     id: '1',
     name: 'Andrew',
     email: 'andrew@example.com',
@@ -16,7 +13,7 @@ let users = [{
     email: 'mike@example.com'
 }]
 
-let posts = [{
+const posts = [{
     id: '10',
     title: 'GraphQL 101',
     body: 'This is how to use GraphQL...',
@@ -36,7 +33,7 @@ let posts = [{
     author: '2'
 }]
 
-let comments = [{
+const comments = [{
     id: '102',
     text: 'This worked well for me. Thanks!',
     author: '3',
